@@ -7,7 +7,7 @@ Proyecto de portafolio QA: consulta una API REST de práctica y compara la respu
 
 ## Estado del paquete
 
-Incluye el flujo real exportado por la autora, la documentación y las evidencias transcritas de tres ejecuciones. Se revisaron la estructura, las conexiones y el código exportado. Pendiente: importar el archivo en una instancia de n8n para comprobar su portabilidad y publicarlo en el repositorio elegido. Aún no se ha publicado en GitHub.
+Incluye el flujo real exportado por la autora, la documentación y las evidencias transcritas de tres ejecuciones. Se revisaron la estructura, las conexiones y el código exportado. Pendiente: importar el archivo en una instancia de n8n para comprobar su portabilidad y publicarlo en el repositorio elegido.  Publicado en GitHub: https://github.com/mduquep73/P01-validacion-api
 
 ## Flujo
 
