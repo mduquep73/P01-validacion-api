@@ -1,0 +1,17 @@
+# Dependencias y estado local de n8n
+node_modules/
+.n8n/
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+
+# Configuración privada y registros
+.env
+.env.*
+!.env.example
+*.log
+
+# Archivos temporales del sistema
+Thumbs.db
+.DS_Store

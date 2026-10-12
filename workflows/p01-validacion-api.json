@@ -1,0 +1,87 @@
+{
+  "name": "P01 - Validación de API",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "fed6f880-a18c-4be8-8c0b-045b2ea28d4b",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://jsonplaceholder.typicode.com/posts/1",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "52a7428b-1346-430f-b619-f3a803c381c7",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "jsCode": "const respuesta = $input.first().json;\nconst datos = respuesta.body ?? {};\n\nconst pruebas = [\n  {\n    caso: \"TC01 - Código HTTP\",\n    esperado: 200,\n    obtenido: respuesta.statusCode ?? null,\n    aprobado: respuesta.statusCode === 200\n  },\n  {\n    caso: \"TC02 - ID de la publicación\",\n    esperado: 1,\n    obtenido: datos.id ?? null,\n    aprobado: datos.id === 1\n  },\n  {\n    caso: \"TC03 - Título válido\",\n    esperado: \"Texto no vacío\",\n    obtenido: datos.title ?? null,\n    aprobado:\n      typeof datos.title === \"string\" &&\n      datos.title.trim().length > 0\n  }\n];\n\nreturn pruebas.map(prueba => ({\n  json: {\n    ...prueba,\n    resultado: prueba.aprobado ? \"PASS\" : \"FAIL\"\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        0
+      ],
+      "id": "a4904ff4-951b-4c71-8de8-96a29c7dfa69",
+      "name": "Validar respuesta"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Validar respuesta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "e10b5534-a571-491a-afa6-f568f7ab1f21",
+  "meta": {
+    "instanceId": "066d5c8b432d59448c8d4307a63cab7a289b3ecedfe47edf0c4013a4fa1e2c41"
+  },
+  "nodeGroups": [],
+  "id": "ftGmJq6LIB9z7tx9",
+  "tags": []
+}

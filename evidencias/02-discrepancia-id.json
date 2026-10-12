@@ -1,0 +1,23 @@
+[
+  {
+    "caso": "TC01 - Código HTTP",
+    "esperado": 200,
+    "obtenido": 200,
+    "aprobado": true,
+    "resultado": "PASS"
+  },
+  {
+    "caso": "TC02 - ID de la publicación",
+    "esperado": 1,
+    "obtenido": 2,
+    "aprobado": false,
+    "resultado": "FAIL"
+  },
+  {
+    "caso": "TC03 - Título válido",
+    "esperado": "Texto no vacío",
+    "obtenido": "qui est esse",
+    "aprobado": true,
+    "resultado": "PASS"
+  }
+]
